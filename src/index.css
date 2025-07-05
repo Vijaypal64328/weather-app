@@ -1,0 +1,217 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #d5dade, #00f2fe);
+  min-height: 100vh;
+}
+
+.app-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.search-bar {
+  display: flex;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  background: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.weather-card {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-size: 30px;
+}
+
+.weather-card img {
+  width: 100px;
+}
+
+.forecast-card {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+.hourly {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 10px 0;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #888 transparent; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.hour {
+  min-width: 150px;
+  min-height: 200px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0; /* Prevent shrinking */
+  
+}
+
+.hour {
+  background: linear-gradient(135deg, #81e3ea7f 0%, #71acffc2 100%);
+  border-radius: 8px;
+  padding: 8px;
+  text-align: center;
+  
+}
+
+.hour img {
+  width: 50px;
+}
+.functional-cards-grid {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  display: flex;
+  gap: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  /* Scrollbar styling for webkit browsers */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #888 transparent;
+}
+
+.functional-cards-grid::-webkit-scrollbar {
+  height: 6px; /* reduced height */
+}
+
+.functional-cards-grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.functional-cards-grid::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 3px;
+}
+
+/* Functional card styling */
+.func-card {
+  background: linear-gradient(135deg, #81e3ea7f 0%, #71acffc2 100%);
+  border-radius: 12px; /* changed from 8px to 12px for more curve */
+  padding: 10px;
+  text-align: center;
+  min-width: 150px;
+  min-height: 200px;
+  flex-shrink: 0;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.func-card img {
+  width: 50px;
+  height: 50px;
+  margin: 10px 0;
+}
+
+.func-card p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.func-card span {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ff5722;
+}
+
+.func-card .description {
+  font-size: 12px;
+  color: #555;
+}
+
+
+
+@media (max-width: 600px) {
+  .app-container {
+    padding: 10px;
+  }
+
+  .search-bar {
+    flex-direction: column;
+  }
+
+  .search-bar input,
+  .search-bar button {
+    width: 30%;
+    box-sizing: border-box;
+    border-radius: 10px;
+  }
+
+  .search-bar {
+    flex-direction: row;
+  }
+  
+  
+}
+footer {
+  background: rgba(255, 255, 255, 0.6);
+  padding: 2px 10px;
+  text-align: center;
+  /* border-top: 1px solid #ccc; */
+  margin-top: 30px;
+}
+
+footer p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+footer a {
+  color: #007acc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #005c99;
+  text-decoration: underline;
+}
+
+footer small, footer p:last-child {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #666;
+}
+
+@media (max-width: 500px) {
+  footer p {
+    font-size: 12px;
+  }
+}
+
