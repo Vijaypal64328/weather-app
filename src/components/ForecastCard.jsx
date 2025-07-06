@@ -1,5 +1,7 @@
 // Import the React library to use JSX and React features
 import React from "react";
+// Import weather icons from react-icons library
+import { WiHumidity, WiStrongWind, WiThermometer } from "react-icons/wi";
 
 // Define the ForecastCard functional component, receiving 'forecast' as a prop
 const ForecastCard = ({ forecast }) => {
@@ -10,25 +12,30 @@ const ForecastCard = ({ forecast }) => {
 
   // Render the forecast card UI
   return (
-    <div className="forecast-card"> {/* Container for the forecast card */}
-      <h3>Upcoming Forecast</h3> {/* Title for the forecast section */}
-      <div className="hourly"> {/* Container for hourly forecast items */}
-        {/* Loop through the first 12 forecast items */}
-        {forecast.list.slice(0, 12).map((item, index) => (
-          <div key={index} className="hour"> {/* Container for each hour */}
-            {/* Display the hour (in 24-hour format) */}
-            <p>{new Date(item.dt * 1000).getHours()}:00</p>
-            {/* Display the weather icon */}
-            <img
-              src={`https://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
-              alt={item.weather[0].description}
-            />
-            {/* Display the temperature in Celsius */}
-            <p>{item.main.temp}°C</p>
-          </div>
-        ))}
+    <div className="forecast-card">
+  <h3>Upcoming Forecast</h3>
+  <div className="hourly">
+    {forecast.list.slice(0, 12).map((item, index) => (
+      <div key={index} className="hour">
+        <p>{new Date(item.dt * 1000).getHours()}:00</p>
+
+        <img
+          src={`https://openweathermap.org/img/wn/${item.weather[0].icon}.png`}
+          alt={item.weather[0].description}
+        />
+
+       
+            <p>{item.weather[0].description}</p>
+            <p><WiHumidity size={24} /> {item.main.humidity}%</p>
+            <p><WiStrongWind size={24} /> {item.wind?.speed ?? 'N/A'} m/s</p>
+            <p><WiThermometer size={24} /> {item.main.temp}°C</p>
+        <p>Feels like: {item.main.feels_like}°C</p>
+
       </div>
-    </div>
+    ))}
+  </div>
+</div>
+
   );
 };
 

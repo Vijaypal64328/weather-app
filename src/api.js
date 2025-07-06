@@ -36,8 +36,41 @@ export const fetchForecast = async (city) => {
         // Log any errors to the console
         console.error("Error fetching forecast data:", error);
         // Show an alert if the city is not found or there is an API error
-        alert("Forecast data could not be fetched.");
+        // alert("Forecast data could not be fetched.");
         // Return null if there was an error
         return null;
     }
-};      
+};   
+// Function to fetch weather forecast for next days 
+  export const fetch5DayForecastGrouped = async (city) => {
+  try {
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`;
+    const response = await axios.get(url);
+
+    // Group forecasts by day
+    const grouped = {};
+    response.data.list.forEach((item) => {
+      const date = item.dt_txt.split(" ")[0];
+      if (!grouped[date]) {
+        grouped[date] = [];
+      }
+      grouped[date].push(item);
+    });
+
+    // For each day, take the mid-day (12:00) forecast or nearest available
+    const dailyData = Object.keys(grouped).map((date) => {
+      const dayItems = grouped[date];
+      const midDay = dayItems.find((i) => i.dt_txt.includes("12:00:00")) || dayItems[Math.floor(dayItems.length / 2)];
+      return midDay;
+    });
+
+    return dailyData;
+
+  } catch (error) {
+    console.error("Error fetching grouped forecast data:", error);
+    // alert("Grouped forecast data could not be fetched.");
+    return null;
+  }
+};
+
+

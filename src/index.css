@@ -15,7 +15,7 @@ body {
 .search-bar {
   display: flex;
   margin-bottom: 20px;
-  background: rgba(255, 255, 255, 0.8);
+  background:transparent;
   border-radius: 12px;
   padding: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -25,6 +25,14 @@ body {
   flex: 1;
   padding: 10px;
   font-size: 16px;
+  border: 1px solid #ccc;
+  outline: none;
+  border-radius: 16px;
+  margin-right: 10px;
+  box-sizing: border-box;
+  background: transparent;
+  transition: border-color 0.3s ease;
+
 }
 
 .search-bar button {
@@ -34,28 +42,45 @@ body {
   border: none;
   cursor: pointer;
   border-radius: 3px;
+  /* making negative zoom effect on click */
+  transition: transform 0.2s ease;
+  transform: scale(0.95);
 }
 
 .weather-card {
   text-align: center;
-  background: rgba(255, 255, 255, 0.6);
+  background: transparent;
   border-radius: 12px;
   padding: 15px;
   margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   font-size: 30px;
 }
-
+.weather-card h2 {
+  margin: 10px 0;
+  font-size: 44px;
+}
 .weather-card img {
-  width: 100px;
+  width: 200px;
+}
+/* .weather-card p {
+  margin: 5px 0;
+  font-size: 18px;
+} */
+.weather-card .weather-description {
+  font-size: 20px;
 }
 
 .forecast-card {
-  background: rgba(255, 255, 255, 0.6);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   padding: 15px;
   margin-bottom: 20px;
   overflow-x: auto;
+  text-align: center;
 }
 
 .hourly {
@@ -64,8 +89,8 @@ body {
   overflow-x: auto;
   padding: 10px 0;
   scrollbar-width: thin; /* For Firefox */
-  scrollbar-color: #888 transparent; /* For Firefox */
-  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  scrollbar-color: #888 transparent;
+  -ms-overflow-style: none; 
 }
 
 .hour {
@@ -91,67 +116,65 @@ body {
 .hour img {
   width: 50px;
 }
-.functional-cards-grid {
-  background: rgba(255, 255, 255, 0.6);
+.functional-cards-container {
+  background: transparent;
   border-radius: 12px;
   padding: 15px;
-  margin-bottom: 20px;
-  overflow-x: auto;
-  display: flex;
-  gap: 20px;
+  margin: 20px auto;
+  max-width: 800px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
-  /* Scrollbar styling for webkit browsers */
-  scrollbar-width: thin; /* Firefox */
-  scrollbar-color: #888 transparent;
+.functional-cards-container h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.functional-cards-grid {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #888 transparent; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.func-card {
+  background: linear-gradient(135deg, #81e3ea7f 0%, #71acffc2 100%);
+  border-radius: 12px;
+  min-width: 150px;
+  min-height: 200px;
+  flex-shrink: 0;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.func-card h4 {
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.func-card p {
+  margin: 3px 0;
+  font-size: 13px;
 }
 
 .functional-cards-grid::-webkit-scrollbar {
-  height: 6px; /* reduced height */
+  height: 6px;
+}
+
+.functional-cards-grid::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 3px;
 }
 
 .functional-cards-grid::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.functional-cards-grid::-webkit-scrollbar-thumb {
-  background-color: #888;
-  border-radius: 3px;
-}
-
-/* Functional card styling */
-.func-card {
-  background: linear-gradient(135deg, #81e3ea7f 0%, #71acffc2 100%);
-  border-radius: 12px; /* changed from 8px to 12px for more curve */
-  padding: 10px;
-  text-align: center;
-  min-width: 150px;
-  min-height: 200px;
-  flex-shrink: 0;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-}
-
-.func-card img {
-  width: 50px;
-  height: 50px;
-  margin: 10px 0;
-}
-
-.func-card p {
-  margin: 5px 0;
-  font-size: 14px;
-}
-
-.func-card span {
-  font-size: 16px;
-  font-weight: bold;
-  color: #ff5722;
-}
-
-.func-card .description {
-  font-size: 12px;
-  color: #555;
-}
 
 
 
@@ -169,6 +192,13 @@ body {
     width: 30%;
     box-sizing: border-box;
     border-radius: 10px;
+    /* removing search button */
+    /* display: none; */
+
+  }
+  .search-bar button {
+    /* removing search button */
+    display: none;
   }
 
   .search-bar {
@@ -177,11 +207,71 @@ body {
   
   
 }
-footer {
-  background: rgba(255, 255, 255, 0.6);
-  padding: 2px 10px;
+.daywise-card {
+  background:transparent;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 800px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+.daywise-card h3 {
   text-align: center;
-  /* border-top: 1px solid #ccc; */
+  margin-bottom: 15px;
+}
+
+.daily {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #888 transparent; /* For Firefox */
+}
+
+.day {
+  background: linear-gradient(135deg, #81e3ea7f 0%, #71acffc2 100%);
+  border-radius: 12px;
+  min-width: 150px;
+  min-height: 200px;
+  flex-shrink: 0;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.day p {
+  margin: 5px 0;
+  font-size: 13px;
+}
+
+.day img {
+  width: 50px;
+  height: 50px;
+}
+
+.daily::-webkit-scrollbar {
+  height: 6px;
+}
+
+.daily::-webkit-scrollbar-thumb {
+  background: #999;
+  border-radius: 3px;
+}
+
+.daily::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+
+footer {
+  background: transparent;
+  padding: 0px 10px;
+  text-align: center;
+  border-top: 1px solid #ccc;
   margin-top: 30px;
 }
 
@@ -189,17 +279,6 @@ footer p {
   margin: 6px 0;
   font-size: 14px;
   color: #333;
-}
-
-footer a {
-  color: #007acc;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-footer a:hover {
-  color: #005c99;
-  text-decoration: underline;
 }
 
 footer small, footer p:last-child {
@@ -214,4 +293,27 @@ footer small, footer p:last-child {
     font-size: 12px;
   }
 }
+/* .error-card {
+  background: rgba(255, 230, 230, 0.8);
+  border: 2px solid #ff4d4d;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  max-width: 400px;
+  margin: 20px auto;
+  box-shadow: 0 2px 10px rgba(255, 0, 0, 0.2);
+}
+
+.error-card h2 {
+  color: #d8000c;
+  margin-top: 10px;
+}
+
+.error-card p {
+  color: #a70000;
+} */
+/* .error-card .error-icon {
+  color: #ff4d4d;
+  margin-bottom: 10px;
+} */
 

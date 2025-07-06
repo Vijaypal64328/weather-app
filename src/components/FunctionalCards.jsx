@@ -14,6 +14,8 @@ const FunctionalCards = ({ weather, aqi, uv }) => {
   };
 
   return (
+    <div className="functional-cards-container">
+      <h3>Weather Metrics</h3>
     <div className="functional-cards-grid">
       <div className="func-card">
         <h4>Visibility</h4>
@@ -56,6 +58,7 @@ const FunctionalCards = ({ weather, aqi, uv }) => {
         <p>{aqi}</p>
         <p>{conditions.aqi}</p>
       </div>
+    </div>
     </div>
   );
 };
